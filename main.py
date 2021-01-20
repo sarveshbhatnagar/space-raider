@@ -1,10 +1,11 @@
 import pygame
-import player,enemy
+import player
+import enemy
 
 pygame.init()
 
 # Create Screen
-screen = pygame.display.set_mode((800,600))
+screen = pygame.display.set_mode((800, 600))
 bkg = pygame.image.load("bkg.jpg")
 
 # Title
@@ -14,14 +15,15 @@ pygame.display.set_icon(icon)
 
 # Player
 playerImg = pygame.image.load('player.png')
-playerobj = player.Player(30,255,screen,playerImg)
+playerobj = player.Player(30, 255, screen, playerImg)
 
 # Enemy
 enemyImg = pygame.image.load('monster.png')
-enemyobj = enemy.MoonVader(750, 10, screen,enemyImg)
+enemyobj = enemy.MoonVader(750, 10, screen, enemyImg)
 
 # Bullet Image
 bulletImg = pygame.image.load('bullet.png')
+
 
 def handle_keydown(eventkey):
     default_change = 7
@@ -55,16 +57,15 @@ while running:
 
         if(event.type == pygame.KEYDOWN):
             handle_keydown(event.key)
-        
+
         if (event.type == pygame.KEYUP):
             handle_keyup(event.key)
-        
 
     # screen.fill((255,255,255))
-    screen.fill((0,0,0))
+    screen.fill((0, 0, 0))
 
     # Background
-    screen.blit(bkg,(0,0))
+    screen.blit(bkg, (0, 0))
 
     playerobj.updateX()
     playerobj.updateY()
@@ -78,4 +79,3 @@ while running:
 
     # Update display after every iteration.
     pygame.display.update()
-
